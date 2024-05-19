@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Edge",
+            "port": 4200,
+            "request": "attach",
+            "type": "msedge",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to something",
+            "type": "chrome",
+            "request": "launch",
+            "port": 4200,
+            "url": "http://localhost:4200",
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+            "webRoot": "c:/Working/CompetitionOrganiser/WebClient",
+            "sourceMapPathOverrides": {
+                "webpack://Module/*": "${workspaceFolder}/Module/*"
+            }
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}

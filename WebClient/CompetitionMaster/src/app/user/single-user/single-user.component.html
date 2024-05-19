@@ -1,0 +1,90 @@
+
+
+<div class="header">
+    <h2>{{workingUser.name}}  <button mat-mini-fab class="smallBut" title="save">
+        <mat-icon aria-label="save">save</mat-icon>
+    </button>
+    <button mat-mini-fab color="accent" class="vsmallBut" title="search using Code">
+        <mat-icon aria-label="Search for user">search</mat-icon>
+      </button>
+    <button mat-mini-fab class="smallBut" color="accent" title="clear all" (click)="ClearAll()">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <button mat-mini-fab class="smallBut" color="warn" title="archive user">
+        <mat-icon>archive</mat-icon>
+    </button>
+    <button mat-mini-fab class="smallBut" color="warn" title="delete user">
+        <mat-icon>delete</mat-icon>
+    </button></h2>
+   
+  </div>
+  
+  <div class="row">
+    <div class="leftcolumn">
+        <div class="upperMargin">
+          <div>
+      
+               
+                <mat-form-field [style.width.px]=600>
+                  <input disabled="disabled" matInput placeholder="ID" value="{{workingUser.id}}" >
+                </mat-form-field >
+
+                  
+   <br/>
+                <mat-form-field [style.width.px]=600>
+                    <input matInput placeholder="Code"  id="codeInput" value="{{workingUser.code}}">
+                  </mat-form-field >
+       
+                  <button mat-mini-fab color="accent" class="smallBut" title="access from code" (click)="GetUserFromCode()">
+                    <mat-icon aria-label="Load">upload</mat-icon>
+                  </button>
+                  
+                  <button mat-mini-fab color="accent" class="vsmallBut" title="clear" (click)="ClearField('codeInput')">
+                      <mat-icon aria-label="Clear Text">clear</mat-icon>
+                    </button>
+                </div>
+               
+          
+                  <mat-form-field [style.width.px]=600>
+                    <input matInput placeholder="Tag" id="tagInput" value="{{workingUser.tag}}">
+                  </mat-form-field>
+                  <button mat-mini-fab color="accent" class="smallBut" title="access from tag" (click)="GetUserFromTag()">
+                    <mat-icon aria-label="Load">upload</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="accent" class="smallBut" title="clear" (click)="ClearField('tagInput')">
+                      <mat-icon aria-label="Clear Text">clear</mat-icon>
+                    </button><br/>
+                  <mat-form-field [style.width.px]=600 >
+                      <input matInput placeholder="Name" id="nameInput" value="{{workingUser.name}}">
+                    </mat-form-field>
+                           <button mat-mini-fab color="accent" class="smallBut" title="clear" (click)="ClearField('nameInput')">
+                          <mat-icon aria-label="Clear Text">clear</mat-icon>
+                        </button><br/>
+ 
+            </div>
+            <img class="mainImg" src="{{workingUser.thumbnailUrl}}" alt="mainImage">
+    </div>
+    <div class="rightcolumn">
+      <div class="card">
+        <img src="{{workingUser.thumbnailUrl}}" alt="thumbnail">
+        <!-- https://www.gravatar.com/avatar/21232f297a57a5a743894a0e4a801fc3?d=wavatar&s=100 -->
+      </div>
+      <div class="card">
+        <h3>History</h3>
+        <div class="fakeimg">Image</div><br>
+        <div class="fakeimg">Image</div><br>
+        <div class="fakeimg">Image</div>
+      </div>
+      <div class="card">
+        <h3>Follow Me</h3>
+        <p>Some text..</p>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row"></div>
+  
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
+  

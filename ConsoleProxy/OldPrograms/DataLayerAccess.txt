@@ -1,0 +1,72 @@
+﻿// See https://aka.ms/new-console-template for more information
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using ServerCommonModule.Repository;
+using ServerCommonModule.Repository.Interfaces;
+using ServerCommonModule.Database;
+using ServerCommonModule.Database.Interfaces;
+using System;
+using UserDomain.model;
+using UserDomain.Model;
+
+
+
+IEnvironmentalParameters envParms = new EnvironmentalParameters("Host=localhost;Username=postgres;Password=modena;Database=UserDb");
+IDbUtilityFactory dbUtilityFactory = new PgUtilityFactory(envParms, null);
+
+IRepositoryFactory fact = new RepositoryFactory(dbUtilityFactory, envParms);
+
+PrimeUserCollection usersCollection = new PrimeUserCollection();
+IRepositoryManager<PrimeUser> primeUserManager = fact.Get(usersCollection);
+await primeUserManager.LoadCollection();
+
+
+
+Console.WriteLine("Create User");
+PrimeUser dummy = usersCollection.CreateItem();
+dummy.Name = "Michael Ney";
+dummy.Id = Guid.NewGuid();
+dummy.Status = UserDomain.Properties.UserStatus.SUSPENDED;
+dummy.Tag = "REDHEAD";
+dummy.Code = "TST0000004";
+
+usersCollection.Add(dummy);
+
+await primeUserManager.InsertSingleItem(dummy);
+
+
+
+//await primeUserManager.SaveCollection();
+Console.Write(System.Environment.NewLine + System.Environment.NewLine + "**** POST INSERT OF USER ****" + System.Environment.NewLine + System.Environment.NewLine);
+// should load one or 2 users. check contents of collection before moving on
+// print users!
+foreach (PrimeUser user in usersCollection)
+{
+    Console.Write(user.ToString());
+}
+
+// update user
+PrimeUser neyUser = usersCollection.Where(x => x.Tag == "REDHEAD").FirstOrDefault();
+neyUser.Name = "M NEY";
+await primeUserManager.UpdateSingleItem(neyUser);
+Console.Write(System.Environment.NewLine + System.Environment.NewLine + "**** POST UPDATE OF USER ****" + System.Environment.NewLine + System.Environment.NewLine);
+
+foreach (PrimeUser user in usersCollection)
+{
+    Console.Write(user.ToString());
+}
+
+// delete user just added
+usersCollection.Remove(dummy);
+await primeUserManager.DeleteSingleItem(dummy);
+Console.Write(System.Environment.NewLine + System.Environment.NewLine + "**** POST DELETE OF USER ****" + System.Environment.NewLine + System.Environment.NewLine);
+// should load one or 2 users. check contents of collection before moving on
+// print users!
+foreach (PrimeUser user in usersCollection)
+{
+    Console.Write(user.ToString());
+}
+
+Console.WriteLine("Show Results ");

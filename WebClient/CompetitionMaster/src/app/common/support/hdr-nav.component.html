@@ -1,0 +1,26 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button ><mat-icon>menu</mat-icon></button><!-- (click)="snav.toggle()"-->
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+         
+           > 
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon> <!-- (click)="drawer.toggle()" *ngIf="isHandset$ | async"-->
+        </button>
+        <!-- <span>{{ 'UN_APPLICATION_TITLE' | translate: lang}}</span> -->
+        <div style="position: fixed; right: 0px;">
+          <!-- <button mat-icon-button (click)="buttonClicked('INDEX')" title="{{ 'UN_INDEX' | translate: lang}}" ><i class="material-icons"  style="font-size:24px; ">list</i></button>
+          <button mat-icon-button (click)="buttonClicked('SEARCH')" title="{{ 'UN_SEARCH' | translate: lang}}" ><i class="material-icons"  style="font-size:24px; ">search</i></button>
+          <button mat-icon-button (click)="buttonClicked('HISTORY')" title="{{ 'UN_HISTORY' | translate: lang}}" ><i class="material-icons"  style="font-size:24px; ">history</i></button>
+          <button mat-icon-button (click)="buttonClicked('SETTINGS')" title="{{ 'UN_SETTINGS' | translate: lang}}" ><i class="material-icons"  style="font-size:24px; ">settings</i></button> -->
+          <!-- <button class="button" title="User" ><i class="material-icons"  style="font-size:24px; ">person</i></button> -->
+          <!-- <button mat-icon-button title="{{ 'UN_HELP_ABOUT' | translate: lang}}" ><i class="material-icons"  style="font-size:24px; ">help</i></button> -->
+        </div>
+        
+      </mat-toolbar>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
